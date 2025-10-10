@@ -1,0 +1,13 @@
+<form action="{{ searchFormURL|default:"" }}" method="get" class="w-100 d-inline-flex gap-2">
+  <input
+    type="text"
+    name="search"
+    id="searchInput"
+    class="form-control {{ borderColor }}"
+    placeholder="{{ placeholderText }}"
+  />
+  <button type="submit" class="btn d-flex align-items-center gap-1 {{ buttonColor }}">
+    Search
+    <i class="bi bi-search"></i>
+  </button>
+</form>
