@@ -135,7 +135,9 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+.env/local/*
+.env/production/*
+!.env/local/.example.*
 .envrc
 .venv
 env/
@@ -210,3 +212,7 @@ __marimo__/
 *.DS_Store
 .prettierrc
 notes.md
+study-hub/static/image/originals/
+.github/envs/
+.github/secrets/
+remove-folders.sh
