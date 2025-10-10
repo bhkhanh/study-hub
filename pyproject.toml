@@ -1,0 +1,19 @@
+[tool.black]
+target-version = ["py313"]
+include = '(\.pyi?|\.ipynb)$'
+extend-exclude = '''
+/(
+    \.git
+  | .*/static
+  | .*/media
+  | .*/migrations
+)/
+'''
+
+[tool.isort]
+profile = "black"
+py_version = 313
+multi_line_output = 3
+include_trailing_comma = true
+skip = ["migrations"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "DJANGO", "LOCALFOLDER"]
