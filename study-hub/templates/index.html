@@ -19,11 +19,13 @@
       class="logo-in-introduction"
     />
     <div class="brand-title mb-0" data-aos="fade-up" data-aos-delay="500">StudyHub</div>
-    <p class="slogan-text" data-aos="fade-up" data-aos-delay="450">Learn and explore knowledge, together.</p>
+    <p class="slogan-text" data-aos="fade-up" data-aos-delay="450">
+      Kho tài liệu cho mọi người cùng nhau học tập và cùng nhau phát triển.
+    </p>
     <!-- Search bar -->
     <div data-aos="fade-up" data-aos-delay="400" id="searchSection">
       <!--prettier-ignore-->
-      {% with placeholderText="Search here..." borderColor="border-color-heading" buttonColor="button-color-heading" %}
+      {% with placeholderText="Nhập vào đây để tìm kiếm..." borderColor="border-color-heading" buttonColor="button-color-heading" %}
       {% include "components/forms/search-form.html" %}
       {% endwith %}
     </div>
@@ -42,7 +44,7 @@
   <!-- List of categories -->
   <div class="bg-white my-5 px-5 py-4 rounded-3 shadow">
     <a href="{% url 'category-list-view' %}" class="heading-title" data-aos="fade-up" data-aos-delay="250">
-      Category
+      Phân loại
     </a>
     <hr class="mt-2 mb-4 border-2 text-heading-color opacity-100" />
     <div class="mb-4">{% include "components/list/list-of-categories.html" %}</div>

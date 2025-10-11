@@ -1,13 +1,13 @@
-<form action="{{ searchFormURL|default:"" }}" method="get" class="w-100 d-inline-flex gap-2">
+<form action="{{ searchFormURL|default:"" }}" method="get" class="w-100 d-flex align-items-center justify-content-center gap-2">
   <input
     type="text"
     name="search"
     id="searchInput"
-    class="form-control {{ borderColor }}"
+    class="form-control flex-grow-1 {{ borderColor }}"
     placeholder="{{ placeholderText }}"
   />
-  <button type="submit" class="btn d-flex align-items-center gap-1 {{ buttonColor }}">
-    Search
+  <button type="submit" class="btn {{ buttonColor }} flex-shrink-0 d-flex align-items-center gap-1">
+    Tìm kiếm
     <i class="bi bi-search"></i>
   </button>
 </form>
