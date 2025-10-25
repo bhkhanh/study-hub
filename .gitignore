@@ -1,0 +1,51 @@
+# Byte-compiled
+__pycache__/
+
+
+# Visual Studio Code configuration
+.vscode/
+
+
+# ignore .env folder,
+# but excluding files that starts with '.example'
+.env/*
+!.env/.example.*
+
+
+# ignore .github folder,
+# but excluding workflows folder inside of it
+.github/*
+!.github/workflows/
+
+
+# misc
+*.DS_Store
+.prettierrc
+notes.md
+remove-folders.sh
+*/static/image/originals/
+
+
+# Translations
+*.mo
+*.pot
+
+
+# Django stuff:
+*.log
+
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+.hypothesis/
+.pytest_cache/
+cover/
