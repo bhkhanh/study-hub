@@ -1,0 +1,27 @@
+<!--prettier-ignore-->
+{% extends "base-with-breadcrumb.html" %}
+{% load static %}
+
+<!-- Breadcrumbs -->
+{% block other_breadcrumbs %}
+<li class="breadcrumb-item active" aria-current="page">Tìm kiếm</li>
+{% endblock other_breadcrumbs %}
+
+<!-- Content inside Main -->
+{% block sub_main %}
+
+<!-- ========== Search form ========== -->
+<!--prettier-ignore-->
+<div data-aos="fade-up" data-aos-delay="300">
+  {% with placeholderText="Nhập vào đây để tìm kiếm..." buttonColor="button-color-accent" borderColor="border-color-accent" %}
+    {% include "components/forms/search-form.html" %}
+  {% endwith %}
+</div>
+
+<!-- ========== Data Table ========== -->
+<!--prettier-ignore-->
+<div class="mt-4 pb-5 mb-5">
+  {% include "components/lists/list-of-files.html" %}
+</div>
+
+{% endblock sub_main %}

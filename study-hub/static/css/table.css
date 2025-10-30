@@ -1,0 +1,42 @@
+/* Customize the style of Table/Data Table only */
+
+.page-link {
+  color: var(--accent-color);
+}
+
+.active > .page-link {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+:root {
+  --dt-row-hover: 102, 102, 102;
+  --dt-row-selected: 233, 243, 250;
+  /* --dt-row-selected-text: 36, 135, 206; */
+  --dt-row-selected-text: 0, 0, 0;
+  --dt-row-selected-link: 36, 135, 206;
+}
+
+.form-check-input:checked {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.form-check-input[type="checkbox"]:indeterminate {
+  background-color: var(--accent-color);
+  border-color: var(--contrast-color);
+}
+
+.dt-column-header .form-check-input {
+  border-color: var(--contrast-color);
+}
+
+.table-color-accent {
+  --bs-table-bg: #2487ce;
+  --bs-table-color: #ffffff;
+}
+
+tbody tr td a:hover {
+  text-decoration: underline;
+}

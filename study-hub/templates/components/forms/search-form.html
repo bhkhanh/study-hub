@@ -1,0 +1,14 @@
+<form action="{{ searchFormURL|default:"" }}" method="post" class="w-100 d-flex align-items-center justify-content-center gap-2">
+  {% csrf_token %}
+  <input
+    type="text"
+    name="search"
+    id="searchInput"
+    class="form-control form-control-responsive flex-grow-1 {{ borderColor }}"
+    placeholder="{{ placeholderText }}"
+  />
+  <button type="submit" class="btn btn-responsive {{ buttonColor }} flex-shrink-0 d-flex align-items-center gap-1">
+    Tìm kiếm
+    <i class="bi bi-search"></i>
+  </button>
+</form>

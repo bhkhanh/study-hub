@@ -1,0 +1,262 @@
+/* Inspired the color and CSS styles from this site below: */
+/* https://themewagon.com/themes/onepage/ */
+
+/* Global Colors */
+:root {
+  --background-color: #f6f9ff;
+  --default-color: #444444;
+  --heading-color: #124265;
+  --accent-color: #2487ce;
+  --contrast-color: #ffffff;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/* ========== General/Bootstrap adjusting ========== */
+
+body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--default-color);
+  padding-top: 101px;
+
+  @media (max-width: 768px) {
+    padding-top: 85px;
+  }
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+@media (width < 768px) {
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.breadcrumb-item a:hover {
+  color: var(--heading-color);
+}
+
+/* ========== Custom styling ========== */
+
+@media (min-width: 768px) {
+  /* Round the border when width screen is equals or above 768px */
+  /* Mobile screen doesn't need this element to be rounded. */
+  #introduction {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+}
+
+.logo-in-introduction {
+  width: 64px;
+  height: 64px;
+
+  @media (max-width: 550px) {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+.brand-title {
+  color: var(--heading-color);
+  font-weight: 800;
+  font-size: 28px;
+}
+
+.slogan-text {
+  color: var(--heading-color);
+
+  @media (width <= 700px) {
+    font-size: 14px;
+  }
+}
+
+#searchSection {
+  width: 55%;
+
+  /* Width screen is less than 768px will have the search form width is 75% */
+  @media (width < 1280px) {
+    width: 75%;
+  }
+}
+
+.form-control-responsive {
+  @media (width < 768px) {
+    min-height: calc(1.5em + 0.5rem + calc(var(--bs-border-width) * 2));
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: var(--bs-border-radius-sm);
+  }
+}
+
+.btn-responsive {
+  @media (width < 768px) {
+    --bs-btn-padding-y: 0.25rem;
+    --bs-btn-padding-x: 0.5rem;
+    --bs-btn-font-size: 0.875rem;
+    --bs-btn-border-radius: var(--bs-border-radius-sm);
+  }
+}
+
+#cover-image {
+  border-radius: 1rem;
+
+  @media (max-width: 900px) {
+    border-radius: 0;
+  }
+}
+
+.heading-title {
+  color: var(--heading-color);
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.heading-title:hover {
+  color: var(--accent-color);
+}
+
+/* Text and border colors */
+
+.text-color-accent {
+  color: var(--accent-color);
+}
+
+.text-color-heading {
+  color: var(--heading-color);
+}
+
+.border-color-accent {
+  border-color: var(--accent-color);
+}
+
+.border-color-heading {
+  border-color: var(--heading-color);
+}
+
+/* Buttons */
+
+.button-color-accent,
+.button-color-accent:focus {
+  color: var(--contrast-color);
+  background-color: var(--accent-color);
+  transition: all 0.3s;
+}
+
+.button-color-accent:hover,
+.button-color-accent:focus:hover {
+  color: var(--contrast-color);
+  background-color: var(--heading-color);
+  border-color: var(--accent-color);
+}
+
+.button-color-accent:focus {
+  box-shadow: 0 0 0 0.25rem var(--heading-color);
+}
+
+.button-color-heading,
+.button-color-heading:focus {
+  color: var(--contrast-color);
+  background-color: var(--heading-color);
+  transition: all 0.3s;
+}
+
+.button-color-heading:hover,
+.button-color-heading:focus:hover {
+  color: var(--contrast-color);
+  background-color: var(--accent-color);
+  border-color: var(--heading-color);
+}
+
+.button-color-heading:focus {
+  box-shadow: 0 0 0 0.25rem var(--accent-color);
+}
+
+.button-color-for-downloader {
+  color: var(--contrast-color);
+  background-color: var(--accent-color);
+  transition: all 0.3s;
+}
+
+.button-color-for-downloader:hover {
+  color: var(--contrast-color);
+  background-color: var(--accent-color);
+  opacity: 0.8;
+}
+
+/* Header - Navbar */
+
+.header {
+  color: var(--default-color);
+  background-color: #ffffff;
+  transition: all 0.5s;
+  z-index: 997;
+  height: 100px;
+  padding: 20px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent-color), transparent 85%);
+}
+
+.nav-item a {
+  color: var(--heading-color);
+}
+
+.nav-item a:hover {
+  color: var(--accent-color);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 80px;
+  }
+
+  .header .logo {
+    margin-right: 0;
+  }
+
+  .header .logo img {
+    max-height: 32px;
+    width: auto;
+  }
+
+  .header .logo h1 {
+    font-size: 24px;
+    margin: 0;
+    font-weight: 700;
+    color: var(--heading-color);
+  }
+}
+
+@media (width > 768px) {
+  .header .logo img {
+    max-height: 36px;
+    width: auto;
+  }
+
+  .header .logo h1 {
+    font-size: 28px;
+    margin: 0;
+    font-weight: 800;
+    color: var(--heading-color);
+  }
+}
+
+@media (max-width: 900px) {
+  /* in contact.html */
+  .subtitle-text {
+    font-size: 14px;
+  }
+}

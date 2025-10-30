@@ -1,0 +1,54 @@
+/* Customize the style of Cards only */
+
+.card-customized {
+  height: 250px;
+  color: var(--heading-color);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.095);
+
+  /*
+  Height will be more higher
+  when the screen is wider than 2000px
+  */
+  @media (min-width: 2000px) {
+    height: 350px;
+  }
+}
+
+.card-customized:hover {
+  transform: scale(1.04);
+  color: var(--accent-color);
+  box-shadow: 5px 6px 6px 2px #e9ecef;
+}
+
+.card-customized .card-customized-title-container {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 8px;
+  border-radius: 0.25rem;
+}
+
+.card-customized:hover .card-customized-title-container {
+  background-color: var(--heading-color);
+}
+
+.card-customized .card-customized-title-container .card-customized-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.card-customized .card-customized-title-container .card-customized-subtitle {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.opacity-overlay-on-img {
+  position: absolute;
+  opacity: 0.6;
+  height: 100%;
+  width: 100%;
+  transition: opacity 0.3s ease;
+}
+
+.card-customized:hover .opacity-overlay-on-img {
+  opacity: 1;
+}

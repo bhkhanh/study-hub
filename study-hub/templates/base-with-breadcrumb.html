@@ -1,0 +1,19 @@
+<!--prettier-ignore-->
+{% extends "base.html" %}
+{% load static %}
+
+<!-- Main -->
+{% block main %}
+<div class="container-fluid container-md py-3 py-lg-4 px-4 px-md-0">
+  <div aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{% url 'home-view' %}" class="text-color-accent">Trang chủ</a>
+      </li>
+      {% block other_breadcrumbs %}{% endblock other_breadcrumbs %}
+    </ol>
+  </div>
+
+  {% block sub_main %}{% endblock sub_main %}
+</div>
+{% endblock main %}

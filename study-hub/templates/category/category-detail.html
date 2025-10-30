@@ -1,0 +1,14 @@
+{% extends "base-with-breadcrumb.html" %}
+
+<!-- Breadcrumbs -->
+{% block other_breadcrumbs %}
+<li class="breadcrumb-item">
+  <a href="{% url 'category-list-view' %}" class="text-color-accent">Phân loại</a>
+</li>
+<li class="breadcrumb-item active" aria-current="page">{{ category_detail.name }}</li>
+{% endblock other_breadcrumbs %}
+
+<!-- Content inside Main -->
+{% block sub_main %}
+<div class="mt-4 pb-5 mb-5">{% include "components/lists/list-of-subcategories.html" %}</div>
+{% endblock sub_main %}

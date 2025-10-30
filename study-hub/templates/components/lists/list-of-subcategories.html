@@ -1,0 +1,143 @@
+<!--prettier-ignore-->
+{% load static %}
+
+{% block additional_stylesheets %}
+<link rel="stylesheet" href="{% static 'css/card.css' %}" />
+{% endblock additional_stylesheets %}
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 g-md-5">
+  <!--prettier-ignore-->
+  {% if subcategory_list %} {% comment %} Check if 'subcategory_list' exists {% endcomment %}
+
+  {% for subcategory in subcategory_list %} {% comment %} forloop if TRUE {% endcomment %}
+  <div class="col" data-aos="fade-up">
+    <a class="card card-customized" href="{{ subcategory.get_absolute_url }}">
+      <img
+        src="{% static 'image/covers/for-subcategory-card.svg' %}"
+        alt="Subject cover image"
+        class="card-img opacity-overlay-on-img"
+        width="100%"
+        height="100%"
+      />
+      <div class="card-img-overlay">
+        <div class="card-customized-title-container">
+          <div class="card-customized-title">{{ subcategory.name }}</div>
+          <div class="card-customized-subtitle">{{ subcategory.category.name }}</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+
+  <!--prettier-ignore-->
+  {% else %}
+  
+  {% comment %}
+    If 'subcategory_list' does not exist,
+    display examples for demonstration.  
+  {% endcomment %}
+
+  <div class="col" data-aos="fade-up">
+    <a class="card card-customized" href="#">
+      <img
+        src="{% static 'image/covers/for-subcategory-card.svg' %}"
+        alt="Subject cover image"
+        class="card-img opacity-overlay-on-img"
+        width="100%"
+        height="100%"
+      />
+      <div class="card-img-overlay">
+        <div class="card-customized-title-container">
+          <div class="card-customized-title">Sub-Example 01</div>
+          <div class="card-customized-subtitle">Example A</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col" data-aos="fade-up">
+    <a class="card card-customized" href="#">
+      <img
+        src="{% static 'image/covers/for-subcategory-card.svg' %}"
+        alt="Subject cover image"
+        class="card-img opacity-overlay-on-img"
+        width="100%"
+        height="100%"
+      />
+      <div class="card-img-overlay">
+        <div class="card-customized-title-container">
+          <div class="card-customized-title">Sub-Example 02</div>
+          <div class="card-customized-subtitle">Example A</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col" data-aos="fade-up">
+    <a class="card card-customized" href="#">
+      <img
+        src="{% static 'image/covers/for-subcategory-card.svg' %}"
+        alt="Subject cover image"
+        class="card-img opacity-overlay-on-img"
+        width="100%"
+        height="100%"
+      />
+      <div class="card-img-overlay">
+        <div class="card-customized-title-container">
+          <div class="card-customized-title">Sub-Example 03</div>
+          <div class="card-customized-subtitle">Example B</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col" data-aos="fade-up">
+    <a class="card card-customized" href="#">
+      <img
+        src="{% static 'image/covers/for-subcategory-card.svg' %}"
+        alt="Subject cover image"
+        class="card-img opacity-overlay-on-img"
+        width="100%"
+        height="100%"
+      />
+      <div class="card-img-overlay">
+        <div class="card-customized-title-container">
+          <div class="card-customized-title">Sub-Example 04</div>
+          <div class="card-customized-subtitle">Example B</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col" data-aos="fade-up">
+    <a class="card card-customized" href="#">
+      <img
+        src="{% static 'image/covers/for-subcategory-card.svg' %}"
+        alt="Subject cover image"
+        class="card-img opacity-overlay-on-img"
+        width="100%"
+        height="100%"
+      />
+      <div class="card-img-overlay">
+        <div class="card-customized-title-container">
+          <div class="card-customized-title">Sub-Example 05</div>
+          <div class="card-customized-subtitle">Example C</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col" data-aos="fade-up">
+    <a class="card card-customized" href="#">
+      <img
+        src="{% static 'image/covers/for-subcategory-card.svg' %}"
+        alt="Subject cover image"
+        class="card-img opacity-overlay-on-img"
+        width="100%"
+        height="100%"
+      />
+      <div class="card-img-overlay">
+        <div class="card-customized-title-container">
+          <div class="card-customized-title">Sub-Example 06</div>
+          <div class="card-customized-subtitle">Example C</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  {% endif %}
+</div>

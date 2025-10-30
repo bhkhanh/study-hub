@@ -1,0 +1,59 @@
+/* Footer styling */
+
+.footer {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  margin-top: auto;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.footer h4 {
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 12px;
+  color: var(--heading-color);
+}
+
+.footer .footer-links ul,
+.footer .footer-contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .footer-contact ul i {
+  line-height: 0;
+}
+
+.footer .footer-links ul li,
+.footer .footer-contact ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .footer-links ul a,
+.footer .footer-contact ul span,
+.footer .footer-contact ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .footer-links ul a:hover,
+.footer .footer-contact ul a:hover {
+  color: var(--accent-color);
+}
+
+@media (max-width: 900px) {
+  .footer p .text-muted,
+  .footer .footer-links ul a,
+  .footer .footer-contact ul span,
+  .footer .footer-contact ul a,
+  .footer .footer-contact ul i {
+    font-size: 14px;
+  }
+}

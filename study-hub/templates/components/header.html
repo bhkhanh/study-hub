@@ -1,0 +1,116 @@
+{% load static %}
+
+<header id="header" class="header navbar navbar-expand-lg fixed-top d-flex align-items-center shadow-sm">
+  <div class="container d-flex align-items-center">
+    <!-- Logo and the brand name -->
+    <a href="{% url 'home-view' %}" class="logo d-flex align-items-center gap-2">
+      <img src="{% static 'image/apps/logo.svg' %}" alt="Brand logo" height="100%" width="100%" />
+      <h1>StudyHub</h1>
+    </a>
+
+    <!-- Button for toggling Offcanvas -->
+    <button
+      class="navbar-toggler text-primary-emphasis border-2"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#navbarOffcanvas"
+      aria-controls="navbarOffcanvas"
+      aria-label="Toggle navigation"
+      type="button"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar items -->
+    <nav id="navbarOffcanvas" class="offcanvas offcanvas-end w-75" tabindex="-1" aria-labelledby="navbarLabelOffcanvas">
+      <div class="offcanvas-header">
+        <div
+          class="d-flex align-items-center gap-2 fw-bolder text-color-accent fs-4"
+          data-bs-dismiss="offcanvas"
+          type="button"
+        >
+          <i class="bi bi-grid"></i>
+          Menu
+        </div>
+        <button class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" type="button"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav d-lg-flex align-items-lg-center gap-4 gap-lg-5 ms-auto ps-3 ps-lg-0 fw-semibold">
+          <li class="nav-item">
+            <a href="{% url 'home-view' %}" class="d-flex align-items-center gap-2 gap-lg-1">
+              <i class="bi bi-house-door"></i>
+              Trang chủ
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'search-all-view' %}" class="d-flex align-items-center gap-2 gap-lg-1">
+              <i class="bi bi-search"></i>
+              Tìm kiếm
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="dropdown-toggle d-flex align-items-center gap-2 gap-lg-1"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-list-ul"></i>
+              Phân loại
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end mt-2 shadow">
+              <!--prettier-ignore-->
+              {% if category_list %} {% comment %} Check if 'category_list' exists {% endcomment %}
+              
+              {% for category in category_list %} {% comment %} forloop if TRUE {% endcomment %}
+              <li>
+                <a href="{{ category.get_absolute_url }}" class="dropdown-item d-flex align-items-center gap-2">
+                  <i class="bi bi-tag"></i>
+                  {{ category.name|title }}
+                </a>
+              </li>
+              {% endfor %}
+
+              <!--prettier-ignore-->
+              {% else %}
+              <li>
+                <a href="#" class="dropdown-item d-flex align-items-center gap-2">
+                  <i class="bi bi-tag"></i>
+                  Example 01
+                </a>
+              </li>
+              <li>
+                <a href="#" class="dropdown-item d-flex align-items-center gap-2">
+                  <i class="bi bi-tag"></i>
+                  Example 02
+                </a>
+              </li>
+              {% endif %}
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a href="{% url 'category-list-view' %}" class="dropdown-item d-flex align-items-center gap-2">
+                  <i class="bi bi-tags-fill"></i>
+                  Xem tất cả
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'about-view' %}" class="d-flex align-items-center gap-2 gap-lg-1">
+              <i class="bi bi-info-circle"></i>
+              Về StudyHub
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'contact-view' %}" class="d-flex align-items-center gap-2 gap-lg-1">
+              <i class="bi bi-envelope-at"></i>
+              Liên hệ
+            </a>
+          </li>
+          <li class="d-lg-none">
+            <hr />
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>

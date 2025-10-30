@@ -1,0 +1,38 @@
+<!--prettier-ignore-->
+{% load static %}
+
+<!-- css block -->
+{% block additional_stylesheets %}
+<link rel="stylesheet" href="{% static 'vendor/datatables/datatables.min.css' %}" />
+<link rel="stylesheet" href="{% static 'vendor/datatables/select.bootstrap5.min.css' %}" />
+<link rel="stylesheet" href="{% static 'css/table.css' %}" />
+{% endblock additional_stylesheets %}
+
+<!-- javascript block -->
+{% block additional_javascript %}
+<script src="{% static 'vendor/jquery/jquery-3.7.1.js' %}"></script>
+<script src="{% static 'vendor/datatables/datatables.min.js' %}"></script>
+<script src="{% static 'vendor/datatables/dataTables.select.min.js' %}"></script>
+<script src="{% static 'vendor/datatables/select.bootstrap5.min.js' %}"></script>
+<script src="{% static 'vendor/js-file-downloader/js-file-downloader.min.js' %}"></script>
+<script src="{% static 'js/datatable.js' %}"></script>
+{% endblock additional_javascript %}
+
+<!-- list of files / table of files -->
+{% block sub_main %}
+<div class="table-responsive">
+  <table class="table table-bordered table-hover align-middle m-0" id="dataTable">
+    <thead class="table-color-accent">
+      <tr>
+        <th></th>
+        <th class="fw-medium text-center"></th>
+        <th class="fw-medium text-center"></th>
+        <th class="fw-medium text-center"></th>
+        <th class="fw-medium text-center"></th>
+        <th class="fw-medium text-center"></th>
+        <th class="fw-medium text-center"></th>
+      </tr>
+    </thead>
+  </table>
+</div>
+{% endblock sub_main %}

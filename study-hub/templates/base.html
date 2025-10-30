@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Web application for sharing lectures, lessons, and study resources" />
+    <meta name="keywords" content="web application, document, file, share, study, hub, lectures" />
+
+    <!-- Document's title shown in a browser's title bar or tab -->
+    <title>{{ metadata_title|default:'StudyHub' }}</title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{% static 'image/apps/favicon.ico' %}" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'image/apps/apple-touch-icon.png' %}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'image/apps/favicon-32x32.png' %}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'image/apps/favicon-16x16.png' %}" />
+
+    <!-- Vendor CSS Stylesheets -->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap5/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap-icons/bootstrap-icons.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendor/aos/aos.css' %}" />
+
+    <!-- Application CSS Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+
+    <!-- Additional CSS Stylesheets -->
+    {% block additional_stylesheets %}{% endblock additional_stylesheets %}
+  </head>
+  <body>
+    {% include "components/header.html" %}
+
+    <main id="main">{% block main %} {% endblock main %}</main>
+
+    {% block footer %}{% endblock footer %}
+
+    <!-- Vendor JavaScript Files-->
+    <script src="{% static 'vendor/bootstrap5/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/aos/aos.js' %}"></script>
+
+    <!-- initialize Animate On Scroll (AOS) library -->
+    <script>
+      AOS.init();
+    </script>
+
+    <!-- Application JavaScript Files -->
+    <script src="{% static 'js/global.js' %}"></script>
+
+    <!-- Additional JavaScript Files/Code -->
+    {% block additional_javascript %}{% endblock additional_javascript %}
+  </body>
+</html>

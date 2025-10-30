@@ -1,0 +1,59 @@
+<!--prettier-ignore-->
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_stylesheets %}
+<link rel="stylesheet" href="{% static 'css/card.css' %}" />
+<link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+{% endblock additional_stylesheets %}
+
+<!-- Main -->
+{% block main %}
+<div class="container-fluid container-md py-4">
+  <div class="bg-white pt-4 px-2 text-center shadow d-flex flex-column align-items-center" id="introduction">
+    <img
+      src="{% static 'image/apps/logo.svg' %}"
+      alt="Logo"
+      width="100%"
+      height="100%"
+      data-aos="zoom-in"
+      class="logo-in-introduction"
+    />
+    <div class="brand-title mb-0" data-aos="fade-up" data-aos-delay="500">StudyHub</div>
+    <p class="slogan-text" data-aos="fade-up" data-aos-delay="450">
+      Kho tài liệu cho mọi người cùng nhau học tập và cùng nhau phát triển.
+    </p>
+    <!-- Search bar -->
+    <div data-aos="fade-up" data-aos-delay="400" id="searchSection">
+      <!--prettier-ignore-->
+      {% with placeholderText="Bạn cần tìm tài liệu gì...?" borderColor="border-color-heading" buttonColor="button-color-heading" %}
+        {% include "components/forms/search-form.html" %}
+      {% endwith %}
+    </div>
+    <div class="w-100 mt-1">
+      <img
+        src="{% static 'image/covers/for-background-home_page.svg' %}"
+        alt="Background image of introduction"
+        width="100%"
+        height="auto"
+        data-aos="fade-up"
+        data-aos-delay="250"
+      />
+    </div>
+  </div>
+
+  <!-- List of categories -->
+  <div class="bg-white my-5 px-5 py-4 rounded-3 shadow">
+    <a href="{% url 'category-list-view' %}" class="heading-title" data-aos="fade-up" data-aos-delay="250">
+      Phân loại
+    </a>
+    <hr class="mt-2 mb-4 border-2 text-color-heading opacity-100" />
+    <div class="mb-4">{% include "components/lists/list-of-categories.html" %}</div>
+  </div>
+</div>
+{% endblock main %}
+
+<!--prettier-ignore-->
+{% block footer %}
+{% include "components/footer.html" %}
+{% endblock footer %}

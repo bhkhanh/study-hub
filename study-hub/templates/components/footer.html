@@ -1,0 +1,51 @@
+{% load static %}
+
+<footer id="footer" class="footer">
+  <div class="container">
+    <div class="row row-cols-md-2">
+      <div class="col-md-6 mb-4 mb-md-0 px-4 px-lg-2">
+        <div class="text-color-heading fs-5 fw-bolder">StudyHub</div>
+        <p class="text-muted">Kho tài liệu cho mọi người cùng nhau học tập và cùng nhau phát triển.</p>
+      </div>
+      <div class="col-md-6 pt-2">
+        <div class="row row-cols-2 row-cols-lg-3 px-1 px-lg-0 justify-content-md-end">
+          <div class="col-6 col-lg-4 footer-links mb-4 ps-4 ps-lg-0">
+            <h4>Trang liên kết</h4>
+            <ul>
+              <li><a href="{% url 'home-view' %}">Trang chủ</a></li>
+              <li><a href="{% url 'search-all-view' %}">Tìm kiếm</a></li>
+              <li><a href="{% url 'category-list-view' %}">Phân loại</a></li>
+              <li><a href="{% url 'about-view' %}">Về StudyHub</a></li>
+              <li><a href="{% url 'contact-view' %}">Liên hệ</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-5 footer-contact mb-4 ps-md-0">
+            <h4>Liên hệ với chúng tôi</h4>
+            <ul>
+              <li class="gap-2">
+                <i class="bi bi-globe2"></i>
+                <span>Việt Nam</span>
+              </li>
+              <li class="gap-2">
+                <i class="bi bi-telephone"></i>
+                <span>+84 773 090 400</span>
+              </li>
+              <li class="gap-2">
+                <i class="bi bi-envelope-at"></i>
+                <span>bhkhanh@hotmail.com</span>
+              </li>
+              <li class="gap-2">
+                <i class="bi bi-linkedin"></i>
+                <a href="https://linkedin.com/in/bhkhanh/" target="_blank">LinkedIn</a>
+              </li>
+              <li class="gap-2">
+                <i class="bi bi-facebook"></i>
+                <a href="https://facebook.com/bhkhanh" target="_blank">Facebook</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
