@@ -215,6 +215,3 @@ LOGOUT_REDIRECT_URL = "home-view"  # redirect to home page
 # Security
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
-
-# for GitHub webhook
-REPOSITORY_NAME = app_env.str("REPOSITORY_NAME")
