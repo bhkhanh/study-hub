@@ -4,7 +4,7 @@ name: studyhub
 services:
   mysql_db: # MySQL database
     image: mysql:8.4.6
-    container_name: studyhub_database
+    container_name: studyhub_database_local
     restart: always
     env_file:
       - .env/.local.mysql.env # change env file here
@@ -24,9 +24,11 @@ services:
     build:
       context: ./study-hub
       dockerfile: Dockerfile
+      tags:
+        - local
       target: local
     image: studyhub_web
-    container_name: studyhub_web
+    container_name: studyhub_web_local
     restart: always
     env_file:
       - .env/.local.django.env # change env file here
@@ -45,7 +47,7 @@ services:
 # Volumes definition
 volumes:
   studyhub_db_volume:
-    name: studyhub_database_volume
+    name: studyhub_database_volume_local
 
 # Networks definition
 networks:
