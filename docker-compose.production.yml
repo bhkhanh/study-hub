@@ -1,0 +1,57 @@
+# Docker Compose project name
+name: studyhub
+
+services:
+  mysql_db: # MySQL database
+    image: mysql:8.4.6
+    container_name: studyhub_database_production
+    restart: always
+    env_file:
+      - .env/.production.mysql.env # change env file here
+    ports:
+      - 3306:3306
+    volumes:
+      - studyhub_db_volume:/var/lib/mysql
+    networks:
+      - studyhub_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "--verbose"]
+      interval: 10s
+      timeout: 5s
+      retries: 2
+      start_period: 0s
+  django_web: # Django web framework
+    build:
+      context: ./study-hub
+      dockerfile: Dockerfile
+      tags:
+        - production
+      target: production
+    image: studyhub_web
+    container_name: studyhub_web_production
+    restart: always
+    env_file:
+      - .env/.production.django.env # change env file here
+    ports:
+      - 8888:8000
+    networks:
+      - studyhub_network
+    links:
+      - mysql_db
+    depends_on:
+      mysql_db:
+        condition: service_healthy
+
+# Volumes definition
+volumes:
+  studyhub_db_volume:
+    name: studyhub_database_volume_production
+
+# Networks definition
+networks:
+  studyhub_network:
+    name: studyhub_network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.123.0/24
