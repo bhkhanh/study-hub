@@ -49,3 +49,41 @@ COPY . ${HOMEAPP}
 ENTRYPOINT [ "python", "manage.py" ]
 
 CMD [ "runserver", "0.0.0.0:8000" ]
+
+
+# |---------- PRODUCTION ----------|
+FROM python:3.13-slim AS production
+
+COPY --from=builder /usr/local/lib/python3.13/site-packages/ /usr/local/lib/python3.13/site-packages/
+COPY --from=builder /usr/local/bin/ /usr/local/bin/
+
+ARG HOMEAPP=/usr/src
+
+WORKDIR ${HOMEAPP}
+
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends \
+    default-libmysqlclient-dev \
+    libmariadb-dev \
+    gettext \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
+# RUN useradd -m -u 1000 studyhub_user
+
+# COPY --chown=studyhub_user:studyhub_user . ${HOMEAPP}
+
+# RUN chmod +x ${HOMEAPP}/entrypoint.production.sh
+
+# USER studyhub_user
+
+COPY . ${HOMEAPP}
+
+RUN chmod +x ${HOMEAPP}/entrypoint.production.sh
+
+ENTRYPOINT [ "./entrypoint.production.sh" ]
+
