@@ -1,12 +1,9 @@
 from django.contrib import admin
 from django.urls import include, path
 
-from .utilities import github_webhook
-
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("app_studyhub.urls")),
-    path("webhook-update/", view=github_webhook, name="github-webhook-view"),
 ]
 
 
