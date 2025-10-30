@@ -11,7 +11,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - studyhub_db_volume:/var/lib/mysql
+      - studyhub_db_production_volume:/var/lib/mysql
     networks:
       - studyhub_network
     healthcheck:
@@ -44,7 +44,7 @@ services:
 
 # Volumes definition
 volumes:
-  studyhub_db_volume:
+  studyhub_db_production_volume:
     name: studyhub_database_volume_production
 
 # Networks definition
