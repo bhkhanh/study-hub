@@ -215,3 +215,4 @@ LOGOUT_REDIRECT_URL = "home-view"  # redirect to home page
 # Security
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = app_env.list("DJANGO_CSRF_TRUSTED_ORIGINS")
