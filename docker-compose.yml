@@ -2,36 +2,33 @@
 name: studyhub
 
 services:
-  mysql_db: # MySQL database
-    image: mysql:8.4.6
+  postgres_db: # PostgreSQL database
+    image: postgres:17.6-alpine
     container_name: studyhub_database_local
     restart: always
     env_file:
-      - .env/.local.mysql.env # change env file here
+      - .env/.local.postgres.env
     ports:
-      - 3306:3306
+      - 5432:5432
     volumes:
-      - studyhub_db_volume:/var/lib/mysql
+      - studyhub_db_local_volume:/var/lib/postgresql/data
     networks:
       - studyhub_network
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "--verbose"]
+      test: pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB
       interval: 10s
       timeout: 5s
       retries: 2
-      start_period: 0s
   django_web: # Django web framework
     build:
       context: ./study-hub
       dockerfile: Dockerfile
-      tags:
-        - local
       target: local
-    image: studyhub_web
+    image: studyhub_web:local
     container_name: studyhub_web_local
     restart: always
     env_file:
-      - .env/.local.django.env # change env file here
+      - .env/.local.django.env
     ports:
       - 8888:8000
     volumes:
@@ -39,14 +36,14 @@ services:
     networks:
       - studyhub_network
     links:
-      - mysql_db
+      - postgres_db
     depends_on:
-      mysql_db:
+      postgres_db:
         condition: service_healthy
 
 # Volumes definition
 volumes:
-  studyhub_db_volume:
+  studyhub_db_local_volume:
     name: studyhub_database_volume_local
 
 # Networks definition
