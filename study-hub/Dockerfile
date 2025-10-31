@@ -50,5 +50,5 @@ COPY . ${HOMEAPP}
 
 RUN chmod +x ${HOMEAPP}/entrypoint.production.sh
 
-ENTRYPOINT [ "./entrypoint.production.sh" ]
+ENTRYPOINT [ "sh", "entrypoint.production.sh" ]
 
