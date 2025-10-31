@@ -1,5 +1,5 @@
 # |--------- BUILDER ----------|
-FROM python:3.13-slim AS builder
+FROM python:3.13-alpine AS builder
 
 ARG HOMEAPP=/usr/src
 
@@ -8,23 +8,13 @@ WORKDIR ${HOMEAPP}
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends \
-    gcc \
-    default-libmysqlclient-dev \
-    pkg-config \
-    libmariadb-dev \
-    gettext \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip install -U pip setuptools wheel
+RUN pip install -U pip
 COPY requirements.txt .
 RUN pip install -r requirements.txt --no-cache-dir
 
 
 # |---------- LOCAL ----------|
-FROM python:3.13-slim AS local
+FROM python:3.13-alpine AS local
 
 COPY --from=builder /usr/local/lib/python3.13/site-packages/ /usr/local/lib/python3.13/site-packages/
 COPY --from=builder /usr/local/bin/ /usr/local/bin/
@@ -35,14 +25,6 @@ WORKDIR ${HOMEAPP}
 
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
-
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends \
-    default-libmysqlclient-dev \
-    libmariadb-dev \
-    gettext \
-    && rm -rf /var/lib/apt/lists/*
 
 COPY . ${HOMEAPP}
 
@@ -52,7 +34,7 @@ CMD [ "runserver", "0.0.0.0:8000" ]
 
 
 # |---------- PRODUCTION ----------|
-FROM python:3.13-slim AS production
+FROM python:3.13-alpine AS production
 
 COPY --from=builder /usr/local/lib/python3.13/site-packages/ /usr/local/lib/python3.13/site-packages/
 COPY --from=builder /usr/local/bin/ /usr/local/bin/
@@ -63,23 +45,6 @@ WORKDIR ${HOMEAPP}
 
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
-
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends \
-    default-libmysqlclient-dev \
-    libmariadb-dev \
-    gettext \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean
-
-# RUN useradd -m -u 1000 studyhub_user
-
-# COPY --chown=studyhub_user:studyhub_user . ${HOMEAPP}
-
-# RUN chmod +x ${HOMEAPP}/entrypoint.production.sh
-
-# USER studyhub_user
 
 COPY . ${HOMEAPP}
 
