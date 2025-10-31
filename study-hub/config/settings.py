@@ -95,7 +95,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": dj_database_url.config(
         env="DJANGO_DATABASE_URL",
-        engine="django.db.backends.mysql",
+        engine="django.db.backends.postgresql",
         conn_max_age=900,  # (900 seconds = 15 minutes)
         conn_health_checks=True,
         ssl_require=False,
