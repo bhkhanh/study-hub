@@ -123,6 +123,7 @@ class File(BaseAppModel):
         EXERCISE = "exercise", _("Exercise")
         BOOK = "book", _("Book")
         PRACTICE = "practice", _("Practice")
+        EXAM = "exam", _("Exam")
 
     class FileLanguage(models.TextChoices):
         ENGLISH = "en", _("English")
