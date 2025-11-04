@@ -2,40 +2,22 @@
 name: studyhub
 
 services:
-  postgres_db: # PostgreSQL database
-    image: postgres:17.6-alpine
-    container_name: studyhub_database_production
-    restart: always
-    env_file:
-      - .env/.production.postgres.env
-    ports:
-      - 5432:5432
-    volumes:
-      - studyhub_db_production_volume:/var/lib/postgresql/data
-    healthcheck:
-      test: pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB
-      interval: 10s
-      timeout: 5s
-      retries: 2
-  django_web: # Django web framework
+  studyhub_web:
     build:
       context: ./study-hub
       dockerfile: Dockerfile
       target: production
     image: studyhub_web:production
-    container_name: studyhub_web_production
+    container_name: studyhub-web-production
     restart: always
     env_file:
       - .env/.production.django.env
     ports:
       - 8888:8000
-    links:
-      - postgres_db
-    depends_on:
-      postgres_db:
-        condition: service_healthy
+    networks:
+      - studyhub
 
-# Volumes definition
-volumes:
-  studyhub_db_production_volume:
-    name: studyhub_database_volume_production
+networks:
+  studyhub:
+    name: studyhub
+    external: true
