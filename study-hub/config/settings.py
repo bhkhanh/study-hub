@@ -212,9 +212,19 @@ LOGIN_REDIRECT_URL = "home-view"  # redirect to home page
 LOGOUT_REDIRECT_URL = "home-view"  # redirect to home page
 
 
-# Security
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+# HTTPS settings
+CSRF_COOKIE_SECURE = app_env.bool("DJANGO_CSRF_COOKIE_SECURE", default=True)
+SESSION_COOKIE_SECURE = app_env.bool("DJANGO_SESSION_COOKIE_SECURE", default=True)
+SECURE_SSL_REDIRECT = app_env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
+
+# HSTS settings
+SECURE_HSTS_SECONDS = app_env.int("DJANGO_SECURE_HSTS_SECONDS", default=31536000)
+SECURE_HSTS_PRELOAD = app_env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = app_env.bool(
+    "DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True
+)
+
+
 CSRF_TRUSTED_ORIGINS = app_env.list(
     "DJANGO_CSRF_TRUSTED_ORIGINS",
     default=["http://localhost:80", "http://127.0.0.1:80"],
